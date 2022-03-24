@@ -9,17 +9,17 @@ from ReadingFile import *
 
 #sizeFilter =  3168072;
 
-def createEmptyBloomFilter(sizeFilter=3168072):
+def createEmptyBloomFilter(sizeFilter):
  
     bloomFilter = bitarray(sizeFilter) # create a bittarray
     bloomFilter.setall(0)   # set all elements in a to 0
     return bloomFilter 
 
-def fillBloomFilter(numberOfHashFunctions = 1,lst_file=[],sizeFilter=3168072,bloomFilter=None):
+def fillBloomFilter(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
 
     hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage]
 
-    for i in (0,numberOfHashFunctions-1):
+    for i in range(0,numberOfHashFunctions):
 
         for element in lst_file:   
 
@@ -28,21 +28,39 @@ def fillBloomFilter(numberOfHashFunctions = 1,lst_file=[],sizeFilter=3168072,blo
 
     return bloomFilter
 
-def compareFiles(numberOfHashFunctions = 1,bloomFilter=None, lst_file=[],sizeFilter=3168072):
+def compareFiles(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
+
 
     lst_common_words = []
 
     hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage]
 
-    for i in (0,numberOfHashFunctions-1):
+        
+    for element in lst_file: 
 
-        for element in lst_file:   
+        count = 0
+
+        print('numberOfHashFunctions')
+        print(numberOfHashFunctions)
+
+        for i in range(0,numberOfHashFunctions):
+            print("i")
+            print(i)
+
+
 
             index = (hashFunctions[i](element,sizeFilter))
             
-            if bloomFilter[index] == 1:
 
-                lst_common_words.append(element)
+            if bloomFilter[index] == 1:
+                count += 1
+
+        print('count') 
+        print(count)
+        
+        if count == numberOfHashFunctions:
+            
+             lst_common_words.append(element)
 
 
     return [lst_common_words,len(lst_common_words)]

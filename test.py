@@ -1,8 +1,4 @@
-def plus(a):
-    return a+1
+from hashFunctions import *
 
-
-l=[plus]
-
-print(l[0](2))
-
+print(le1_bon_hashage("aalii",30))
+print(le2_bon_hachage("aalii",30))
