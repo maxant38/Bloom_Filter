@@ -17,7 +17,7 @@ def createEmptyBloomFilter(sizeFilter):
 
 def fillBloomFilter(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
 
-    hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage]
+    hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage,co1_hachage_original]
 
     for i in range(0,numberOfHashFunctions):
 
@@ -33,21 +33,14 @@ def compareFiles(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
 
     lst_common_words = []
 
-    hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage]
+    hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage,co1_hachage_original]
 
         
     for element in lst_file: 
 
         count = 0
 
-        print('numberOfHashFunctions')
-        print(numberOfHashFunctions)
-
         for i in range(0,numberOfHashFunctions):
-            print("i")
-            print(i)
-
-
 
             index = (hashFunctions[i](element,sizeFilter))
             
@@ -55,9 +48,6 @@ def compareFiles(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
             if bloomFilter[index] == 1:
                 count += 1
 
-        print('count') 
-        print(count)
-        
         if count == numberOfHashFunctions:
             
              lst_common_words.append(element)
