@@ -45,7 +45,7 @@ def compareFiles(numberOfHashFunctions = 1,bloomFilter=None, lst_file=[],sizeFil
                 lst_common_words.append(element)
 
 
-    return lst_common_words,len(lst_common_words)
+    return [lst_common_words,len(lst_common_words)]
 
         
 
