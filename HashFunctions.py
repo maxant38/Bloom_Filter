@@ -1,3 +1,4 @@
+ # This file countains different hash functions
 
 import binascii
 import math
