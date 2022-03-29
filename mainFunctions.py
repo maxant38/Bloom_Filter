@@ -15,7 +15,7 @@ def createEmptyBloomFilter(sizeFilter):
     bloomFilter.setall(0)   # set all elements in a to 0
     return bloomFilter 
 
-def fillBloomFilter(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
+def fillBloomFilter(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter):
 
     hashFunctions = [le1_bon_hashage,le2_bon_hachage,el1_bon_hachage,co1_bon_hachage,co1_hachage_original] # list of hash function that can be used
 
@@ -28,7 +28,7 @@ def fillBloomFilter(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=316807
 
     return bloomFilter
 
-def compareFiles(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter=3168072):
+def compareFiles(numberOfHashFunctions,lst_file,bloomFilter,sizeFilter):
 
 
     lst_common_words = [] # list of common words between the two files
